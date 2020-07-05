@@ -1,0 +1,60 @@
+
+.search {
+    color: var(--black);
+    width: 0%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    background:none;
+    transition: width 0.4s ease-in-out;
+    outline: none;
+}
+
+.search.focus {
+    width: 100%;
+    transition: width 0.4s ease-in-out;
+}
+
+.effect{
+    border: 0;
+    padding: 4px 0;
+    /* border-bottom: 1px solid #ccc; */
+    background-color: transparent;
+  }
+   
+  .effect ~ .focusBorder{
+    position: absolute;
+    bottom: -5px;
+    left: 100%;
+    width: 0;
+    height: 2px;
+    background-color: var(--black);
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+  }
+   
+  .effect:focus ~ .focusBorder,
+  .has-content.effect ~ .focusBorder{
+    width: 100%;
+    opacity: 1;
+    transition: 0.4s ease-in-out;
+    left: 0%;
+  }
+   
+  .effect ~ label{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 9px;
+    color: rgb(68, 61, 61);
+    transition: 0.3s;
+    z-index: 10;
+    letter-spacing: 0.5px;
+  }
+   
+  .effect:focus ~ label,
+  .has-content.effect ~ label{
+    top: -16px;
+    font-size: 12px;
+    color: #3399FF;
+    transition: 0.3s;
+  }

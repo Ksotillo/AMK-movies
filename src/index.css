@@ -1,3 +1,24 @@
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url(./assets/fonts/ProximaNova-Regular.otf);
+  }
+
+  @font-face {
+    font-family: 'Proxima Nova';
+    src: url(./assets/fonts/Proxima\ Nova\ Bold.otf);
+    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: 'Proxima Nova';
+    src: url(./assets/fonts/Proxima\ Nova\ Condensed\ Light.otf);
+    font-weight: lighter;
+  }
+
+  * {
+      font-family: 'Proxima Nova', sans-serif;
+  }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +31,248 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.app {
+    --primary: #FE6D8E;
+    --secondary: #ced2d8;
+    --success: #2eb85c;
+    --info: #39f;
+    --warning: #f9b115;
+    --danger: #e55353;
+    --light: #ebedef;
+    --dark: #636f83;
+    /* color: #3c4b64;
+    background-color: #ebedef; */
+    --color: #3c4b64;
+    --white-bg: #fff;
+    --black: #12153D;
+}
+
+.app {
+    background-color: var(--white-bg);
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+
+
+/* ----------------------------------  WRAPPER   ---------------------------------------------- */
+
+@media (min-width: 992px) {
+    html:not([dir="rtl"]) .sidebar.sidebar-lg-show:not(.sidebar-right).sidebar-fixed ~ .wrapper, html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right).sidebar-fixed ~ .wrapper {
+        margin-left: 256px;
+    }
+}
+.wrapper {
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 100vh;
+}
+
+.wrapper:not(.wrapper-fluid) .body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border-left: 1px solid #eee;
+}
+
+/* ----------------------------------  SIDEBAR   ---------------------------------------------- */
+
+html:not([dir="rtl"]) .sidebar:not(.sidebar-right) {
+    margin-left: -256px;
+}
+
+.sidebar {
+    background: var(--white-bg);
+}
+
+.sidebar {
+    transition: box-shadow 0.3s 0.15s, transform 0.3s, margin-left 0.3s, margin-right 0.3s, width 0.3s, z-index 0s ease 0.3s;
+}
+
+.sidebar {
+    color: #fff;
+    /* background: #3c4b64; */
+}
+
+.sidebar {
+    position: relative;
+    display: flex;
+    flex: 0 0 256px;
+    flex-direction: column;
+    order: -1;
+    width: 256px;
+    padding: 0;
+    box-shadow: none;
+}
+
+@media (min-width: 992px) {
+    .app:not(.legacy-theme):not(.dark-theme) .sidebar.sidebar-lg-show.sidebar-fixed, .app:not(.legacy-theme):not(.dark-theme) .sidebar.sidebar-show.sidebar-fixed {
+        border: 0;
+        box-shadow: 0 2px 2px 0 rgba(60, 75, 100, .14), 0 3px 1px -2px rgba(60, 75, 100, .12), 0 1px 5px 0 rgba(60, 75, 100, .20);
+    }
+    html:not([dir="rtl"]) .sidebar.sidebar-lg-show:not(.sidebar-right), html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right) {
+        margin-left: 0;
+    }
+    html:not([dir="rtl"]) .sidebar.sidebar-fixed:not(.sidebar-right) {
+        left: 0;
+    }
+    .sidebar.sidebar-fixed {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 1031;
+    }
+}
+
+
+
+.h-100 {
+    height: 100% !important;
+}
+
+.sidebar-nav {
+    position: relative;
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    padding: 0;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    list-style: none;
+}
+
+.sidebar .sidebar-brand {
+    color: #fff;
+    background: none;
+    justify-content: center;
+    margin-left: .65rem;
+}
+
+
+.sidebar-brand {
+    display: flex;
+    flex: 0 0 56px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .sidebar-nav-link, .sidebar .sidebar-nav-dropdown-toggle, .sidebar .sidebar-nav-dropdown-toggle {
+    color: #CBCBCB;
+    background: transparent;
+}
+
+.sidebar-nav-link, .sidebar-nav-dropdown-toggle {
+    display: flex;
+    flex: 1 1;
+    align-items: center;
+    padding: 0.8445rem 1rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar .sidebar-nav-link, .sidebar .sidebar-nav-dropdown-toggle {
+    margin: 0 .75rem;
+    padding: 0.6rem 1rem;
+}
+
+.sidebar-nav-item:not(:first-child) {
+    padding: 0.3rem 0;
+}
+
+.wrapper:not(.wrapper-fluid) .header-fixed {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right), html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right) {
+    margin-left: 0;
+}
+
+html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right), html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right) {
+    margin-left: 0;
+}
+
+.sidebar {
+    transition: box-shadow 0.3s 0.15s, transform 0.3s, margin-left 0.3s, margin-right 0.3s, width 0.3s, z-index 0s ease 0.3s;
+}
+@media (max-width: 991.98px) {
+    .sidebar {
+        --is-mobile: true;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 1031;
+        /* top: 57px; */
+    }
+    html:not([dir="rtl"]) .sidebar:not(.sidebar-right) {
+        margin-left: -100%;
+    }
+    html:not([dir="rtl"]) .sidebar:not(.sidebar-right) {
+        margin-left: -256px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .sidebar-backdrop.show {
+        opacity: 0.5;
+        z-index: 1030;
+        transition: all 0.3s;
+    }
+
+    .sidebar-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000015;
+        opacity: 0;
+        transition:  all 0.3s;
+    }
+}
+
+
+/* ----------------------------------  HEADER   ---------------------------------------------- */
+
+.header.header-fixed {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1027;
+}
+
+.header {
+    background: #fff;
+    /* border-bottom: 1px solid #d8dbe0; */
+}
+
+.header {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    min-height: 56px;
+}
+
+@media(max-width: 992px) {
+    .header {
+        padding-top: 56px;
+        padding-bottom: 1rem;
+    }
+}
+
+
+
+.justify-content-end {
+    justify-content: flex-end!important;
 }
