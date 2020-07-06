@@ -1,3 +1,5 @@
+@import './css/animations.css';
+
 @font-face {
     font-family: 'Proxima Nova';
     src: url(./assets/fonts/ProximaNova-Regular.otf);
@@ -47,6 +49,9 @@ code {
     --color: #3c4b64;
     --white-bg: #fff;
     --black: #12153D;
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1;
 }
 
 .app {
@@ -167,6 +172,13 @@ html:not([dir="rtl"]) .sidebar:not(.sidebar-right) {
     background: transparent;
 }
 
+.sidebar .sidebar-nav-link.active, .sidebar .active.sidebar-nav-dropdown-toggle, .sidebar .active.sidebar-nav-dropdown-toggle,
+.sidebar .sidebar-nav-link:hover, .sidebar .sidebar-nav-dropdown-toggle:hover, .sidebar .sidebar-nav-dropdown-toggle:hover {
+    color: var(--black);
+    background: #f2f3f4 !important;
+    border-radius: .2rem;
+}
+
 .sidebar-nav-link, .sidebar-nav-dropdown-toggle {
     display: flex;
     flex: 1 1;
@@ -225,9 +237,12 @@ html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right), html:not([dir="
         opacity: 0.5;
         z-index: 1030;
         transition: all 0.3s;
+        visibility: inherit;
     }
 
     .sidebar-backdrop {
+        visibility: hidden;
+        z-index: 1028;
         position: fixed;
         top: 0;
         left: 0;
@@ -276,3 +291,21 @@ html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right), html:not([dir="
 .justify-content-end {
     justify-content: flex-end!important;
 }
+
+
+/* ----------------------------------  CONTENT   ---------------------------------------------- */
+
+.wrapper:not(.wrapper-fluid) .body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.main {
+    flex-basis: auto;
+    flex-shrink: 0;
+    flex-grow: 1;
+    min-width: 0;
+    padding-top: 2rem;
+}
+

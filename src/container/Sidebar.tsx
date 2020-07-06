@@ -2,23 +2,34 @@
 import React from "react";
 // Third parties
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// Routes
+import routes from "../routes/routes";
+import {  useLocation, Link } from "react-router-dom"
 // Styles
 import styles from "../css/container/Sidebar.module.css";
 
-const Sidebar = ({ opened }: { opened: boolean }) => {
+const Sidebar = ({ opened, setOpened }: { opened: boolean, setOpened: (value: boolean) => void }) => {
+    const location = useLocation();
     return (
         <div className={`sidebar sidebar-dark sidebar-lg-show sidebar-fixed ${opened ? 'sidebar-show' : ''}`}>
             <ul className='sidebar-nav h-100'>
-                <a className={`sidebar-brand ${styles.titleBrand}`} href='/'>
+                <Link className={`sidebar-brand ${styles.titleBrand}`} to='/' onClick={() => setOpened(false)}>
                     AMK Movies
-                </a>
-                {[1, 2, 3, 4, 5].map((v, index) => 
+                </Link>
+                {routes.map((component, index: number) =>
+                    component.isInSidebar ?
                     <li className='sidebar-nav-item' key={index}>
-                        <a className='sidebar-nav-link'>
-                            <FontAwesomeIcon className='mr3' icon='video' />
-                            {v}
-                        </a>
+                        <Link
+                            className={`sidebar-nav-link ${location.pathname === component.path ? 'active' : ''}`}
+                            to={component.path}
+                            onClick={() => setOpened(false)}
+                        >
+                            <FontAwesomeIcon className='mr3' icon={component.icon} />
+                            {component.name}
+                        </Link>
                     </li>
+                    :
+                    null
                 )
 
                 }
@@ -27,4 +38,4 @@ const Sidebar = ({ opened }: { opened: boolean }) => {
     )
 }
 
-export default Sidebar;
+export default React.memo(Sidebar);

@@ -5,6 +5,7 @@ import { useSwipeable, Swipeable } from 'react-swipeable'
 // Components
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import Content from "./Content";
 
 const Layout = () => {
     const [ sidebarOpened, setSidebarOpened ] =useState(false);
@@ -17,11 +18,11 @@ const Layout = () => {
 
     return (
     <div className="app default-layout">
-        <Sidebar opened={sidebarOpened}/>
+        <Sidebar opened={sidebarOpened} setOpened={setSidebarOpened} />
         <div className="wrapper">
             <Header toggleSidebar={toggle}/>
                 <div className="body">
-                    {/* <Content/> */}
+                    <Content/>
                 </div>
         </div>
         <div className={`sidebar-backdrop ${sidebarOpened ? 'show' : ''}`} onClick={() => setSidebarOpened(false)} {...swipeHandlers}></div>
