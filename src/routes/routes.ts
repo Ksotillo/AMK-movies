@@ -1,19 +1,11 @@
 import React, { FunctionComponent } from 'react'
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { Route } from '../models/Route';
 
 // Components
 import Movies from "../views/Movies/Movies";
 
 
 
-export interface Route {
-    path: string,
-    exact?: boolean,
-    name: string,
-    isInSidebar: boolean,
-    icon?: IconProp | any,
-    component?: any;
-}
 
 // const Movies: SFC = () => {
 //     return function (){
