@@ -17,7 +17,7 @@ const Layout = () => {
     const toggle = () => setSidebarOpened(!sidebarOpened);
 
     return (
-    <div className="app default-layout">
+    <div className="app default-layout" >
         <Sidebar opened={sidebarOpened} setOpened={setSidebarOpened} />
         <div className="wrapper">
             <Header toggleSidebar={toggle}/>
@@ -25,7 +25,7 @@ const Layout = () => {
                     <Content/>
                 </div>
         </div>
-        <div className={`sidebar-backdrop ${sidebarOpened ? 'show' : ''}`} onClick={() => setSidebarOpened(false)} {...swipeHandlers}></div>
+        <div className={`sidebar-backdrop ${sidebarOpened ? 'show' : ''}`} onClick={() => setSidebarOpened(false)}></div>
     </div>
     )
 }

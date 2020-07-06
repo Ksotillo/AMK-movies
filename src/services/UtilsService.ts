@@ -3,27 +3,27 @@ import { Genre } from "../models/Genre"
 export const movieGenres: Genre[] = [
     {
       id: 28,
-      name: "Action"
+      name: "Acción"
     },
     {
       id: 12,
-      name: "Adventure"
+      name: "Aventura"
     },
     {
       id: 16,
-      name: "Animation"
+      name: "Animación"
     },
     {
       id: 35,
-      name: "Comedy"
+      name: "Comedia"
     },
     {
       id: 80,
-      name: "Crime"
+      name: "Crimen"
     },
     {
       id: 99,
-      name: "Documentary"
+      name: "Documental"
     },
     {
       id: 18,
@@ -31,27 +31,27 @@ export const movieGenres: Genre[] = [
     },
     {
       id: 10751,
-      name: "Family"
+      name: "Familia"
     },
     {
       id: 14,
-      name: "Fantasy"
+      name: "Fantasía"
     },
     {
       id: 36,
-      name: "History"
+      name: "Historia"
     },
     {
       id: 27,
-      name: "Horror"
+      name: "Terror"
     },
     {
       id: 10402,
-      name: "Music"
+      name: "Música"
     },
     {
       id: 9648,
-      name: "Mystery"
+      name: "Misterio"
     },
     {
       id: 10749,
@@ -59,19 +59,19 @@ export const movieGenres: Genre[] = [
     },
     {
       id: 878,
-      name: "Science Fiction"
+      name: "Ciencia ficción"
     },
     {
       id: 10770,
-      name: "TV Movie"
+      name: "Película de TV"
     },
     {
       id: 53,
-      name: "Thriller"
+      name: "Suspense"
     },
     {
       id: 10752,
-      name: "War"
+      name: "Bélica"
     },
     {
       id: 37,
@@ -82,23 +82,23 @@ export const movieGenres: Genre[] = [
   export const tvGenres: Genre[] = [
     {
       id: 10759,
-      name: "Action & Adventure"
+      name: "Acción y Aventura"
     },
     {
       id: 16,
-      name: "Animation"
+      name: "Animación"
     },
     {
       id: 35,
-      name: "Comedy"
+      name: "Comedia"
     },
     {
       id: 80,
-      name: "Crime"
+      name: "Crimen"
     },
     {
       id: 99,
-      name: "Documentary"
+      name: "Documental"
     },
     {
       id: 18,
@@ -106,39 +106,35 @@ export const movieGenres: Genre[] = [
     },
     {
       id: 10751,
-      name: "Family"
+      name: "Familia"
     },
     {
       id: 10762,
-      name: "Kids"
+      name: "Niños"
     },
     {
       id: 9648,
-      name: "Mystery"
+      name: "Misterio"
     },
     {
       id: 10763,
-      name: "News"
+      name: "Noticias"
     },
     {
       id: 10764,
-      name: "Reality"
+      name: "Realidad"
     },
     {
       id: 10765,
-      name: "Sci-Fi & Fantasy"
-    },
-    {
-      id: 10766,
-      name: "Soap"
+      name: "Sci-Fi & Ciencia Ficción"
     },
     {
       id: 10767,
-      name: "Talk"
+      name: "Charlas"
     },
     {
       id: 10768,
-      name: "War & Politics"
+      name: "Guerra & Política"
     },
     {
       id: 37,
