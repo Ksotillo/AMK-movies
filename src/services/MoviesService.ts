@@ -1,28 +1,30 @@
 import axios from "axios";
 import { ApiService } from "./ApiService";
+import { Movie } from "../models/Movie";
+import { MovieDetail } from "../models/MovieDetail";
 
 export class MoviesService extends ApiService {
 
     
-    getPopularMovies() {
+    getPopularMovies(): Promise<Movie> {
         const url = `https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=es&page=1`
         return axios.get(url);
     }
-    getPopularMoviesByGenre(genre: string) {
-      const url = `https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=es&page=1`
+    getPopularMoviesByGenre(genreId: string): Promise<Movie> {
+      const url = `https://api.themoviedb.org/3/movie?api_key=${this.apiKey}&language=es&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
       return axios.get(url);
     }
-    getTopRatedMovies() {
+    getTopRatedMovies(): Promise<Movie> {
       const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiKey}&language=es&page=1`
       return axios.get(url);
     }
-    getTopRatedMoviesByGenre() {
-      const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiKey}&language=es&page=1`
+    getTopRatedMoviesByGenre(genreId: string): Promise<Movie> {
+      const url = `https://api.themoviedb.org/3/movie?api_key=${this.apiKey}&language=es&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
       return axios.get(url);
     }
 
-    getMovieById(movieId: number) {
-      const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&append_to_response=videos`
+    getMovieById(movieId: number): Promise<MovieDetail> {
+      const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&append_to_response=videos,images`
       return axios.get(url);
     }
     getMostVoted () {
