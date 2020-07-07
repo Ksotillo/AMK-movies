@@ -1,5 +1,5 @@
 // React
-import React, { useState, createRef } from "react";
+import React, { useState, useEffect, createRef } from "react";
 // Third parties
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,8 +10,11 @@ import styles from "../css/container/Header.module.css";
 
 const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
     const [ showSearch, setShowSearch ] = useState(false);
+    const [ shadow, setShadow ] =useState('');
     const [ width ] = useWindowSize();
     const searchBar = createRef<HTMLInputElement>();
+
+
 
     const toggle = () => {
         setShowSearch((prev) => {
@@ -20,9 +23,16 @@ const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
             return !prev
         })
     }
+    // On Mount
+    useEffect(() => {
+        const handleOnScroll = () => setShadow(window.scrollY > 80 ? 'shadow' : '');
+        window.addEventListener('scroll', handleOnScroll);
+        return () => window.removeEventListener('scroll', handleOnScroll);
+    }, [])
+
 
     return (
-        <header className='header header-fixed'>
+        <header className={`header header-fixed ${shadow}`}>
             <Grid className='w-100'>
                 <Row className='h-100 '>
                     <Col md={6} xs={4} className='flex items-center'>

@@ -1,19 +1,32 @@
+// React
 import React, { useState, useEffect, createRef } from 'react'
+// Third Parties
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import useWindowSize from '../../hooks/useWindowSize';
+import Slider from "react-slick";
+// Services
 import { MoviesService } from '../../services/MoviesService';
-import { ApiResponseArray } from '../../models/ApiResponse';
 import { movieGenres } from "../../services/UtilsService";
-import { Movie } from '../../models/Movie';
+// Components
 import GenreFilter from '../../components/Genre';
+// Interface
+import { ApiResponseArray } from '../../models/ApiResponse';
+import { Movie } from '../../models/Movie';
+// Hooks
+import useWindowSize from '../../hooks/useWindowSize';
+import MediaThumb from '../../components/MediaThumb';
+import { Row, Col, Grid } from 'react-flexbox-grid';
 
 
 const moviesService = new MoviesService();
 
+
+
+
 const Movies = () => {
     const [left, setLeft] = useState(0);
-    const [ movies, setMovies ] = useState<Promise<ApiResponseArray<Movie>>[] | ApiResponseArray<Movie>[]> ([]);
+    const [animation, setAnimation] = useState('fadeIn');
+    const [ movies, setMovies ] = useState<ApiResponseArray<Movie>[]> ([]);
     const [ genres, setGenres ] = useState<number[]>([]);
     const [ width ] = useWindowSize();
     const firstTab = createRef<HTMLHeadingElement>();
@@ -34,9 +47,13 @@ const Movies = () => {
     }, [])
 
     const onTabChange = (index: number, lastIndex:number, event: Event) => {
+        setAnimation('fadeIn')
         const { scrollLeft } = document.getElementsByClassName('react-tabs__tab-list')[0];
         const { left } = (event.target as HTMLHeadingElement).getBoundingClientRect() as DOMRectReadOnly;
         setLeft(left + scrollLeft)
+        setTimeout(() => {
+            setAnimation('')
+        }, 1000);
     }
     return (
         <Tabs onSelect={onTabChange}>
@@ -58,16 +75,30 @@ const Movies = () => {
                     <GenreFilter genre={genre} key={index} onGenreAdded={onGenreAdded} onGenreRemoved={onGenreRemoved} />
                 )}
             </div>
+            {movies.length > 0 && movies.map((array, i) => 
+                <TabPanel className={`animated ${animation}`}  key={i}>
+                    <Slider 
+                        className='overflow-hidden'
+                        dots={false}
+                        infinite
+                        centerMode
+                        // autoplay
+                    >
+                        {movies.length > 0 && array.results.slice(0, 7).map((movie: Movie, index: number) =>
+                            <MediaThumb key={index} movie={movie} isSlide/>
+                        )}
+                    </Slider>
+                    <Row className='pl3 pr3'>
+                        {movies.length > 0 && array.results.slice(7).map((movie: Movie, index: number) =>
+                            <Col xs={6}  key={index}>
+                                <MediaThumb key={index} movie={movie}/>
+                            </Col>
+                        )}
     
-            <TabPanel>
-                <h2>Any content 1</h2>
-            </TabPanel>
-            <TabPanel>
-                <h2>Any content 2</h2>
-            </TabPanel>
-            <TabPanel>
-                <h2>Any content 3</h2>
-            </TabPanel>
+                    </Row>
+            
+                </TabPanel>
+            )}
       </Tabs>
     )
 }

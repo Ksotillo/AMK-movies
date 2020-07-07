@@ -4,11 +4,11 @@ import logo from './logo.svg';
 import './App.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faVideo, faSearch, faBars, faFilm, faEdit, faQuestionCircle, faTv } from '@fortawesome/free-solid-svg-icons';
+import { faVideo, faSearch, faBars, faFilm, faEdit, faQuestionCircle, faTv, faStar } from '@fortawesome/free-solid-svg-icons';
 
 import Layout from "./container/Layout";
 
-library.add(faVideo, faSearch, faBars, faFilm, faTv, faEdit, faQuestionCircle)
+library.add(faVideo, faSearch, faBars, faFilm, faTv, faEdit, faQuestionCircle, faStar)
 
 
 // const loading = ;
